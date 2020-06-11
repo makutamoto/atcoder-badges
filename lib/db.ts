@@ -14,7 +14,7 @@ export interface DBRecord {
 const GRAPHQL_ENDPOINT = 'https://graphql.fauna.com/graphql';
 const client = new GraphQLClient(GRAPHQL_ENDPOINT, {
     headers: {
-        authorization: `Bearer ${process.env.faunaDbSecret}`,
+        authorization: `Bearer ${process.env.FAUNADB_SECRET}`,
     },
 });
 
