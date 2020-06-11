@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import Head from 'next/head';
 import { Container, Navbar } from 'react-bootstrap';
 
 import UsernameInput from '../components/UsernameInput';
@@ -9,6 +10,9 @@ export default function() {
     const onSubmit = useCallback((name) => setUsername(name), [setUsername]);
     return (
         <>
+            <Head>
+                <title>AtCoder Badges</title>
+            </Head>
             <Navbar bg="dark" variant="dark">
                 <Navbar.Brand>AtCoder Badges</Navbar.Brand>
             </Navbar>
