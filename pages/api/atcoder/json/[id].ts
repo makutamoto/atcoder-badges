@@ -1,16 +1,16 @@
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextApiRequest, NextApiResponse } from 'next';
 
 import { getUserRateWithCache } from '../../../../lib/atcoder';
 
 const colors = [
-    "#808080", // gray
-    "#804000", // brown
-    "#008000", // green
-    "#00C0C0", // cyan
-    "#0000FF", // blue
-    "#C0C000", // yellow
-    "#FF8000", // orange
-    "#FF0000", // red
+    '#808080', // gray
+    '#804000', // brown
+    '#008000', // green
+    '#00C0C0', // cyan
+    '#0000FF', // blue
+    '#C0C000', // yellow
+    '#FF8000', // orange
+    '#FF0000', // red
 ];
 
 const json = (rate: number | null) => ({
