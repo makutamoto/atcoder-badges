@@ -15,7 +15,6 @@ const colors = [
 
 const json = (rate: number | null) => ({
     schemaVersion: 1,
-    logoSvg: 'https://img.atcoder.jp/assets/top/img/logo_wh.svg',
     label: 'AtCoder',
     message: rate === null ? '-' : rate.toString(),
     color: rate === null ? '000000' : colors[Math.floor(Math.min(2800, rate) / 400)],
