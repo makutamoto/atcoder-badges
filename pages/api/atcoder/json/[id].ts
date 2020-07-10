@@ -16,7 +16,7 @@ const colors = [
 const json = (rate: number | null) => ({
     schemaVersion: 1,
     label: 'AtCoder',
-    message: rate === null ? '-' : rate.toString(),
+    message: rate === null ? 'Unrated' : rate.toString(),
     color: rate === null ? '000000' : colors[Math.floor(Math.min(2800, rate) / 400)],
 });
 
