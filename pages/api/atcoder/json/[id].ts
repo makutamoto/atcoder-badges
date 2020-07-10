@@ -18,6 +18,7 @@ const json = (rate: number | null) => ({
     label: 'AtCoder',
     message: rate === null ? 'Unrated' : rate.toString(),
     color: rate === null ? '000000' : colors[Math.floor(Math.min(2800, rate) / 400)],
+    cacheSeconds: 1800,
 });
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
