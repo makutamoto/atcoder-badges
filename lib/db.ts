@@ -3,7 +3,8 @@ import { GraphQLClient } from 'graphql-request';
 export interface UserCache {
     _id: string,
     name: string,
-    rate: number,
+    atcoderRate: number | null,
+    codeforcesRate: number | null,
     timestamp: string,
 }
 
@@ -23,7 +24,8 @@ query FetchUser($name: String!) {
     user: findUserByName(name: $name) {
         _id
         name
-        rate
+        atcoderRate
+        codeforcesRate
         timestamp
     }
 }
@@ -35,36 +37,41 @@ export async function getUserCache(name: string) {
 }
 
 const registerQuery = `\
-mutation RegisterUser($name: String!, $rate: Int!, $timestamp: Time!) {
+mutation RegisterUser($name: String!, $atcoderRate: Int, $codeforcesRate: Int, $timestamp: Time!) {
     createUser(data: {
       name: $name
-      rate: $rate
+      atcoderRate: $atcoderRate
+      codeforcesRate: $codeforcesRate
       timestamp: $timestamp
     }) {
       name
-      rate
+      atcoderRate
+      codeforcesRate
       timestamp
     }
 }
 `;
 
-export async function registerUserCache(name: string, rate: number) {
+export async function registerUserCache(name: string, atcoderRate: number | null, codeforcesRate: number | null) {
     await client.request(registerQuery, {
         name,
-        rate,
+        atcoderRate,
+        codeforcesRate,
         timestamp: new Date().toISOString(),
     });
 }
 
 const updateQuery = `\
-mutation UpdateUser($id: ID!, $name: String!, $rate: Int!, $timestamp: Time!) {
+mutation UpdateUser($id: ID!, $name: String!, $atcoderRate: Int, $codeforcesRate: Int, $timestamp: Time!) {
     updateUser(id: $id, data: {
         name: $name
-        rate: $rate
+        atocerRate: $atcoderRate
+        codeforcesRate: $codeforcesRate
         timestamp: $timestamp
     }) {
         name
-        rate
+        atcoderRate
+        codeforcesRate
         timestamp
     }
 }
@@ -74,21 +81,8 @@ export async function updateUserCache(cache: UserCache) {
     await client.request(updateQuery, {
         id: cache._id,
         name: cache.name,
-        rate: cache.rate,
+        atcoderRate: cache.atcoderRate,
+        codeforcesRate: cache.codeforcesRate,
         timestamp: new Date().toISOString(),
     });
-}
-
-const deleteQuery = `\
-mutation DeleteUser($id: ID!) {
-    deleteUser(id: $id) {
-        name
-        rate
-        timestamp
-    }
-}  
-`;
-
-export async function deleteUserCache(id: string) {
-    await client.request(deleteQuery, { id });
 }

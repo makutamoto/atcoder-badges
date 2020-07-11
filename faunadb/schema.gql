@@ -1,0 +1,10 @@
+type User {
+    name: String! @unique
+    atcoderRate: Int
+    codeforcesRate: Int
+    timestamp: Time!
+}
+
+type Query {
+    findUserByName(name: String!): User
+}

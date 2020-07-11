@@ -15,7 +15,7 @@ const colors = [
 
 const json = (rate: number | null) => ({
     schemaVersion: 1,
-    label: 'AtCoder',
+    label: 'Codeforces',
     message: rate === null ? 'Unrated' : rate.toString(),
     color: rate === null ? '000000' : colors[Math.floor(Math.min(2800, rate) / 400)],
     cacheSeconds: 1800,
@@ -25,7 +25,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     let username = req.query.id as string;
     let cache = await getUserRateWithCache(username);
     let rate: number | null = null;
-    if(cache !== null) rate = cache.atcoder;
+    if(cache !== null) rate = cache.codeforces;
     res.setHeader('Content-type', 'application/json');
     res.status(200).send(JSON.stringify(json(rate)));
 }
