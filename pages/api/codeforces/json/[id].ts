@@ -2,22 +2,39 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { getUserRateWithCache } from '../../../../lib/cache';
 
-const colors = [
-    '#808080', // gray
-    '#804000', // brown
-    '#008000', // green
-    '#00C0C0', // cyan
-    '#0000FF', // blue
-    '#C0C000', // yellow
-    '#FF8000', // orange
-    '#FF0000', // red
-];
+const colors = {
+    unrated: '#000000',
+    newbie: '#CCCCCC',
+    pupil: '#77FF77',
+    specialist: '#77DDBB',
+    expert: '#AAAAFF',
+    candidateMaster: '#F988FF',
+    master: '#FBCC88',
+    internationalMaster: '#F9BB55',
+    grandMaster: '#F77677',
+    internationalGrandMaster: '#F53334',
+    legendaryGrandmaster: '#AA0300',
+};
+
+function getColor(rate: number | null): string {
+    if(rate === null) return colors.unrated;
+    else if(rate < 1200) return colors.newbie;
+    else if(rate < 1400) return colors.pupil;
+    else if(rate < 1600) return colors.specialist;
+    else if(rate < 1900) return colors.expert;
+    else if(rate < 2100) return colors.candidateMaster;
+    else if(rate < 2300) return colors.master;
+    else if(rate < 2400) return colors.internationalMaster;
+    else if(rate < 2600) return colors.grandMaster;
+    else if(rate < 3000) return colors.internationalGrandMaster;
+    else return colors.legendaryGrandmaster;
+}
 
 const json = (rate: number | null) => ({
     schemaVersion: 1,
     label: 'Codeforces',
     message: rate === null ? 'Unrated' : rate.toString(),
-    color: rate === null ? '000000' : colors[Math.floor(Math.min(2800, rate) / 400)],
+    color: getColor(rate),
     cacheSeconds: 1800,
 });
 
