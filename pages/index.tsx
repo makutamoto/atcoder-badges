@@ -30,7 +30,6 @@ export default function() {
                     <br />
                     Codeforcesにも対応しました。
                 </p>
-                <p>バッジの情報は毎時０分に自動的に更新されます。</p>
                 <p>
                     このサイトのGitHubリポジトリ: <a href="https://github.com/makutamoto/atcoder-badges" target="_blank">https://github.com/makutamoto/atcoder-badges</a>
                     <br />
