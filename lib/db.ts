@@ -65,7 +65,7 @@ const updateQuery = `\
 mutation UpdateUser($id: ID!, $name: String!, $atcoderRate: Int, $codeforcesRate: Int, $timestamp: Time!) {
     updateUser(id: $id, data: {
         name: $name
-        atocerRate: $atcoderRate
+        atcoderRate: $atcoderRate
         codeforcesRate: $codeforcesRate
         timestamp: $timestamp
     }) {
