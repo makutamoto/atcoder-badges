@@ -1,26 +1,21 @@
-import { useState, useEffect } from 'react';
 import CopyField from './CopyField';
 
-const userURL = (name: string) => `https://atcoder.jp/users/${name}`;
-const dataLink = (name: string) => process.browser ? `${window.location.origin}/api/atcoder/json/${name}` : '';
-const shieldsioLink = (url: string) => `https://img.shields.io/endpoint?url=${encodeURIComponent(url)}`;
-
 export interface GeneratorProps {
-    name: string,
+    title: string,
+    tip: string,
+    link: string,
+    badge: string,
 }
 export default function(props: GeneratorProps) {
-    let [user, setUser] = useState('');
-    let [image, setImage] = useState('');
-    useEffect(() => {
-        setUser(userURL(props.name));
-        setImage(shieldsioLink(dataLink(props.name)));
-    }, [props.name]);
     return (
         <>
-            <CopyField title="HTML" value={`<a href="${user}" target="_blank" title="${props.name}"><img src="${image}" /></a>`} />
-            <CopyField title="Markdown" value={`[![${props.name}](${image})](${user})`} />
-            <h3>Preview</h3>
-            <a href={user} target="_blank" title={props.name}><img src={image} /></a>
+            <div className="my-4">
+                <h2>{props.title}</h2>
+                <CopyField title="HTML" value={`<a href="${props.link}" target="_blank" title="${props.tip}"><img src="${props.badge}" /></a>`} />
+                <CopyField title="Markdown" value={`[![${props.tip}](${props.badge})](${props.link})`} />
+                <h3>Preview</h3>
+                <a href={props.link} target="_blank" title={props.tip}><img src={props.badge} /></a>
+            </div>
         </>
     );
 }

@@ -13,7 +13,7 @@ export default function(props: CopyFieldProps) {
             <InputGroup.Prepend>
                 <InputGroup.Text className={styles.title}>{props.title}</InputGroup.Text>
             </InputGroup.Prepend>
-            <FormControl value={props.value} />
+            <FormControl readOnly value={props.value} />
             <InputGroup.Append>
                 <Button variant="secondary" onClick={() => copy(props.value)}>Copy</Button>
             </InputGroup.Append>
