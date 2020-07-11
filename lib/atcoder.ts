@@ -6,7 +6,7 @@ export interface ContestResult {
 
 const userHistroyURL = (name: string) => `https://atcoder.jp/users/${name}/history/json`;
 
-export async function fetchAtCoderRate(name: string) {
+export async function fetchAtCoderRate(name: string): Promise<number | null> {
     let data: ContestResult[];
     console.log(`Fetching '${name}'...`);
     data = (await axios.get(userHistroyURL(name))).data;
