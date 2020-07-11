@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { getUserRateWithCache } from '../../../lib/atcoder';
+import { getUserRateWithCache } from '../../../lib/cache';
 
 const colors = [
     "808080", // gray
@@ -24,7 +24,9 @@ const badge = (rate: number | null) => `\
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
     let username = req.query.id as string;
-    let rate = await getUserRateWithCache(username);
+    let cache = await getUserRateWithCache(username);
+    let rate: number | null = null;
+    if(cache !== null) rate = cache.atcoder;
     res.setHeader('Content-type', 'image/svg+xml');
     res.status(200).send(badge(rate));
 }
