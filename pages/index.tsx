@@ -31,9 +31,9 @@ export default function() {
                     Codeforcesにも対応しました。
                 </p>
                 <p>
-                    このサイトのGitHubリポジトリ: <a href="https://github.com/makutamoto/atcoder-badges" target="_blank">https://github.com/makutamoto/atcoder-badges</a>
+                    このサイトのGitHubリポジトリ: <a href="https://github.com/makutamoto/atcoder-badges" target="_blank" rel="noreferrer">https://github.com/makutamoto/atcoder-badges</a>
                     <br />
-                    作者Twitter: <a href="https://twitter.com/makutamoto" target="_blank">https://twitter.com/makutamoto</a>
+                    作者Twitter: <a href="https://twitter.com/makutamoto" target="_blank" rel="noreferrer">https://twitter.com/makutamoto</a>
                 </p>
                 <UsernameInput onSubmit={onSubmit} />
                 <hr />
