@@ -19,6 +19,7 @@ export default function() {
         <>
             <Head>
                 <title>AtCoder Badges</title>
+                <meta name="description" content="AtCoderのレートと色を表示するバッジを生成します。Codeforcesにも対応しました。" />
             </Head>
             <Navbar bg="dark" variant="dark">
                 <Navbar.Brand>AtCoder Badges</Navbar.Brand>
