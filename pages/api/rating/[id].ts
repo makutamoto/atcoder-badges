@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { getUserRateWithCache } from '../../../../lib/cache';
+import { getUserRateWithCache } from '../../../lib/cache';
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
     let username = req.query.id as string;
